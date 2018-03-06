@@ -8,11 +8,24 @@ import 'rxjs/add/operator/map'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
-  title = 'app';
+
+  obj = {
+    name:
+    email:
+    company:
+    role:
+    twitter:
+    location:
+    info:
+  };
+
+  private apiUrl: string = 'https://ca-address-book.herokuapp.com/api/contacts';
   data = {};
-  private apiUrl =
-  'https://ca-address-book.herokuapp.com/api/contacts';
+
+  // title = 'app';
+  // data = {};
+  // private apiUrl =
+  // 'https://ca-address-book.herokuapp.com/api/contacts';
 
     constructor(private http: Http) {
       this.getContacts().subscribe(data => {
@@ -23,5 +36,11 @@ export class AppComponent {
     getContacts() {
       return this.http.get(this.apiUrl)
       .map((res: Response) => res.json());
+      // we get the response from the request get(this.apiUrl)(line 37)
+      // it will be converted into the json object
+      // .map will return to us in line 38
+    
+    }
+    )
     }
 }
